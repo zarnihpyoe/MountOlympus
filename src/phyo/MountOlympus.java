@@ -163,7 +163,7 @@ public class MountOlympus extends Solitaire {
 	private void initControllers() {
 		
 		// installing controller to DeckView
-		deckView.setMouseAdapter(new DealNineController(this, deck, tableau));
+		deckView.setMouseAdapter(new DeckController(this, deck, tableau));
 		deckView.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
 		
 		scoreView.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));

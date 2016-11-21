@@ -8,12 +8,12 @@ import ks.common.model.Column;
 import ks.common.model.Move;
 import ks.common.model.MultiDeck;
 
-public class DealNineController extends SolitaireReleasedAdapter {
+public class DeckController extends SolitaireReleasedAdapter {
 	
 	MultiDeck deck;
 	Column[] tableau;
 	
-	public DealNineController(Solitaire theGame, MultiDeck deck, Column[] tableau) {
+	public DeckController(Solitaire theGame, MultiDeck deck, Column[] tableau) {
 		super(theGame);
 		this.deck = deck;
 		this.tableau = tableau;
