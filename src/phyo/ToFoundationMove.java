@@ -1,14 +1,35 @@
 package phyo;
 
 import ks.common.games.Solitaire;
+import ks.common.model.Card;
+import ks.common.model.Column;
 import ks.common.model.Move;
+import ks.common.model.Pile;
 
 public class ToFoundationMove extends Move {
 
+	Column from;
+	Pile to;
+	Card cardBeingDragged;
+	
+	public ToFoundationMove(Column from, Pile to, Card cardBeingDragged) {
+		super();
+		this.from = from;
+		this.to = to;
+		this.cardBeingDragged = cardBeingDragged;
+	}
+
 	@Override
 	public boolean doMove(Solitaire game) {
-		// TODO Auto-generated method stub
-		return false;
+		if(!valid(game)) { return false; }
+		
+		if(cardBeingDragged != null) {
+			to.add(cardBeingDragged);
+		} else {
+			to.add(from.get());
+		}
+		game.updateScore(1);
+		return true;
 	}
 
 	@Override
@@ -19,8 +40,9 @@ public class ToFoundationMove extends Move {
 
 	@Override
 	public boolean valid(Solitaire game) {
-		// TODO Auto-generated method stub
-		return false;
+		Card top = to.peek();
+		Card c = cardBeingDragged;
+		return (c.sameSuit(top) && c.getRank() == top.getRank()+2);
 	}
 
 }

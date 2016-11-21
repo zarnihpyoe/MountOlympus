@@ -166,6 +166,18 @@ public class MountOlympus extends Solitaire {
 		deckView.setMouseAdapter(new DeckController(this, deck, tableau));
 		deckView.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
 		
+		// installing controller to Foundation
+		for(int i=0; i<HALF_FOUNDATION; i++) {
+			PileView acePV = aceFoundationView[i];
+			acePV.setMouseAdapter(new FoundationController(this, acePV));
+			acePV.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
+			
+			PileView deucePV = deuceFoundationView[i];
+			deucePV.setMouseAdapter(new FoundationController(this, deucePV));
+			deucePV.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
+		}
+		
+		
 		scoreView.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
 		numLeftView.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
 
