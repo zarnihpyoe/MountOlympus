@@ -2,6 +2,7 @@ package phyo;
 
 import java.awt.Dimension;
 
+import ks.common.controller.SolitaireMouseMotionAdapter;
 import ks.common.games.Solitaire;
 import ks.common.model.Card;
 import ks.common.model.Column;
@@ -161,6 +162,13 @@ public class MountOlympus extends Solitaire {
 
 	private void initControllers() {
 		
+		// installing controller to DeckView
+		deckView.setMouseAdapter(new DealNineController(this, deck, tableau));
+		deckView.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
+		
+		scoreView.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
+		numLeftView.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
+
 	}
 	
 	private void removeAcesTwos() {
