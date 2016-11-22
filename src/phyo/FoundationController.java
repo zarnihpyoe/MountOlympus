@@ -6,7 +6,6 @@ import ks.common.controller.SolitaireReleasedAdapter;
 import ks.common.model.Column;
 import ks.common.model.Move;
 import ks.common.model.Pile;
-import ks.common.view.ColumnView;
 import ks.common.view.Container;
 import ks.common.view.PileView;
 import ks.common.view.Widget;
@@ -48,17 +47,15 @@ public class FoundationController extends SolitaireReleasedAdapter{
 			System.err.println ("FoundationController::mouseReleased() can't move more than one card to the foundation.");
 			fromWidget.returnWidget(draggingWidget);
 			c.releaseDraggingObject();
+			c.repaint();
 			return;
 		}
 		
-		Move m = new ToFoundationMove(src, dest, cardBeingDragged.get());
+		Move m = new ToFoundationMove(src, dest, cardBeingDragged.peek());
 		if(m.doMove(theGame)) {
 			theGame.pushMove(m);
 		} else {
-			// Bug here: the card doesn't go back to the source
 			fromWidget.returnWidget(draggingWidget);
-			src.push(cardBeingDragged);
-			System.out.println("Rejected: go back to your place");
 		}
 		
 		c.releaseDraggingObject();

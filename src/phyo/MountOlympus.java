@@ -98,10 +98,10 @@ public class MountOlympus extends Solitaire {
 	
 	private int getSuit(int pos) {
 		switch(pos%4) {
-			case 0: return Card.SPADES;
-			case 1: return Card.CLUBS;
-			case 2: return Card.DIAMONDS;
-			case 3: return Card.HEARTS;
+			case 0: return Card.CLUBS;
+			case 1: return Card.DIAMONDS;
+			case 2: return Card.HEARTS;
+			case 3: return Card.SPADES;
 			default: return -1;
 		}
 	}
