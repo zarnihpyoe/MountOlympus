@@ -42,7 +42,8 @@ public class ToFoundationMove extends Move {
 	public boolean valid(Solitaire game) {
 		Card top = to.peek();
 		Card c = cardBeingDragged;
-		return (c.sameSuit(top) && c.getRank() == top.getRank()+2);
+		return (c.sameSuit(top) &&
+				c.getRank() == 2+top.getRank());
 	}
 
 }

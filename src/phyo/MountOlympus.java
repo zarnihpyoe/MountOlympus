@@ -177,7 +177,14 @@ public class MountOlympus extends Solitaire {
 			deucePV.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
 		}
 		
+		// Installing controller to Tableau
+		for(int i=0; i<TABLEAU; i++) {
+			ColumnView cv = tableauView[i];
+			cv.setMouseAdapter(new TableauController(this, cv));
+			cv.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
+		}
 		
+		// Installing controller to scoreView and numLeftView
 		scoreView.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
 		numLeftView.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
 
