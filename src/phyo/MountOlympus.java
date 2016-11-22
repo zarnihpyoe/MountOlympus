@@ -189,7 +189,9 @@ public class MountOlympus extends Solitaire {
 		
 		// Installing controller to scoreView and numLeftView
 		scoreView.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
+		scoreView.setUndoAdapter(new SolitaireUndoAdapter(this));
 		numLeftView.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
+		numLeftView.setUndoAdapter(new SolitaireUndoAdapter(this));
 
 	}
 	
