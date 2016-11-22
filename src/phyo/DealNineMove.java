@@ -37,8 +37,16 @@ public class DealNineMove extends Move{
 
 	@Override
 	public boolean undo(Solitaire game) {
-		// TODO Auto-generated method stub
-		return false;
+		// validation
+		for(Column col : tableau) {
+			if(col.empty()) { return false; }
+		}
+		// add back the cards from the last column
+		for(int i=tableau.length-1; i>=0; i--) {
+			deck.add(tableau[i].get());
+			game.updateNumberCardsLeft(+1);
+		}
+		return true;
 	}
 
 	@Override

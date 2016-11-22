@@ -4,6 +4,7 @@ import java.awt.Dimension;
 
 import ks.common.controller.SolitaireMouseMotionAdapter;
 import ks.common.games.Solitaire;
+import ks.common.games.SolitaireUndoAdapter;
 import ks.common.model.Card;
 import ks.common.model.Column;
 import ks.common.model.Deck;
@@ -58,7 +59,7 @@ public class MountOlympus extends Solitaire {
 		initControllers();
 	}
 
-	private void initModel() {
+	protected void initModel() {
 		// Initialize deck
 		deck = new MultiDeck(2);
 		deck.create(seed);
@@ -105,7 +106,7 @@ public class MountOlympus extends Solitaire {
 		}
 	}
 
-	private void initView() {
+	protected void initView() {
 		CardImages ci = getCardImages();
 		int w = ci.getWidth();
 		int h = ci.getHeight();
@@ -160,11 +161,12 @@ public class MountOlympus extends Solitaire {
 		container.addWidget(numLeftView);
 	}
 
-	private void initControllers() {
+	protected void initControllers() {
 		
 		// installing controller to DeckView
 		deckView.setMouseAdapter(new DeckController(this, deck, tableau));
 		deckView.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
+		deckView.setUndoAdapter(new SolitaireUndoAdapter(this));
 		
 		// installing controller to Foundation
 		for(int i=0; i<HALF_FOUNDATION; i++) {
