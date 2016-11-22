@@ -173,10 +173,12 @@ public class MountOlympus extends Solitaire {
 			PileView acePV = aceFoundationView[i];
 			acePV.setMouseAdapter(new FoundationController(this, acePV));
 			acePV.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
+			acePV.setUndoAdapter(new SolitaireUndoAdapter(this));
 			
 			PileView deucePV = deuceFoundationView[i];
 			deucePV.setMouseAdapter(new FoundationController(this, deucePV));
 			deucePV.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
+			deucePV.setUndoAdapter(new SolitaireUndoAdapter(this));
 		}
 		
 		// Installing controller to Tableau

@@ -37,8 +37,12 @@ public class ToTableauMove extends Move {
 
 	@Override
 	public boolean undo(Solitaire game) {
-		// TODO Auto-generated method stub
-		return false;
+		// validation
+		if(to.count() <= numCards) { return false; }
+		// execution
+		to.select(numCards);
+		from.push(to.getSelected());
+		return true;
 	}
 
 	@Override
