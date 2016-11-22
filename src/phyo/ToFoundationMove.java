@@ -34,8 +34,12 @@ public class ToFoundationMove extends Move {
 
 	@Override
 	public boolean undo(Solitaire game) {
-		// TODO Auto-generated method stub
-		return false;
+		// validation
+		if(to.count() <= 1) { return false;	}
+		// execution
+		from.add(to.get());
+		game.updateScore(-1);
+		return true;
 	}
 
 	@Override

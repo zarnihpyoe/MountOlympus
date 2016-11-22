@@ -184,6 +184,7 @@ public class MountOlympus extends Solitaire {
 			ColumnView cv = tableauView[i];
 			cv.setMouseAdapter(new TableauController(this, cv));
 			cv.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
+			cv.setUndoAdapter(new SolitaireUndoAdapter(this));
 		}
 		
 		// Installing controller to scoreView and numLeftView
