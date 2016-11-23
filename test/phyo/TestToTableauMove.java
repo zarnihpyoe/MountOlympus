@@ -52,4 +52,45 @@ public class TestToTableauMove extends TestCase {
 		ToTableauMove m = new ToTableauMove(from, to, dragged, 1);
 		assertTrue(!m.valid(theGame));
 	}
+	
+	public void testToTableauColMove() {
+		Column dragged = new Column();
+		dragged.add(theGame.tableau[0].get());
+		
+		// move 3 club to the last column
+		ToTableauMove m = new ToTableauMove(theGame.tableau[0], theGame.tableau[8], dragged, 1);
+		m.doMove(theGame);
+		
+		// move 3 diamond to the foundation
+		ToFoundationMove d3ToFound = new ToFoundationMove(theGame.tableau[1], 
+				theGame.aceFoundation[1], theGame.tableau[1].get());
+		d3ToFound.doMove(theGame);
+		
+		// deal second time
+		DealNineMove deal2 = new DealNineMove(theGame.deck, theGame.tableau);
+		assertTrue(deal2.valid(theGame));
+		deal2.doMove(theGame);
+		
+		// move 5 diamond to the foundation
+		ToFoundationMove d5ToFound = new ToFoundationMove(theGame.tableau[0], 
+				theGame.aceFoundation[1], theGame.tableau[1].get());
+		d5ToFound.doMove(theGame);
+
+		// move 5 diamond to the foundation
+		ToFoundationMove d7ToFound = new ToFoundationMove(theGame.tableau[8], 
+				theGame.aceFoundation[1], theGame.tableau[8].get());
+		d7ToFound.doMove(theGame);
+		
+		// move 5, 3 clubs to the 8th column
+		Column from = theGame.tableau[8];
+		Column to = theGame.tableau[7];
+		Column draggedCol = new Column();
+		draggedCol.add(from.peek(0));
+		draggedCol.add(from.peek(1));
+		from.removeAll();
+		ToTableauMove valColMove = new ToTableauMove(from, to, draggedCol, 2);
+		assertTrue(valColMove.valid(theGame));
+		
+		valColMove.doMove(theGame);
+	}
 }

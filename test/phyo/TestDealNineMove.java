@@ -3,9 +3,7 @@ package phyo;
 import junit.framework.TestCase;
 import ks.client.gamefactory.GameWindow;
 import ks.common.model.Card;
-import ks.common.model.Column;
 import ks.common.model.Deck;
-import ks.common.model.Pile;
 import ks.launcher.Main;
 
 public class TestDealNineMove extends TestCase {
